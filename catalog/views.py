@@ -14,8 +14,14 @@ def index(request):
     
     # The 'all()' is implied by default.    
     num_authors = Author.objects.count()
+
+    # num_genre = Genre.objects.filter(status__exact='a').count()
+
+    num_book  = Book.objects.filter(title__iexact='cryptography').count()
     
     context = {
+        # 'num_genre' : num_genre,
+        'num_book' : num_book,
         'num_books': num_books,
         'num_instances': num_instances,
         'num_instances_available': num_instances_available,
