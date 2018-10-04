@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.views.generic import ListView, DetailView
 from catalog.models import Book, Genre,BookInstance, Language, Author
 
 def index(request):
@@ -30,3 +30,32 @@ def index(request):
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
+
+
+class BookListView(ListView):
+    model = Book
+    paginate_by = 2
+    template_name = 'catalog/Book/book_list.html'
+    
+         
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get the context
+        context = super(BookListView, self).get_context_data(**kwargs)
+        # Create any data and add it to the context
+        context['book_list'] = Book.objects.all()
+        return context
+
+class BookDetailView(DetailView):
+    model = Book
+    template_name = 'catalog/Book/book_detail.html'
+    paginate_by = 2
+
+class AuthorListView(ListView):
+    model = Author
+    template_name = 'catalog/Author/author_list.html'
+
+class AuthorDetailView(DetailView):
+    model = Author
+    template_name = 'catalog/Author/author_detail.html'
+
+   
