@@ -34,16 +34,8 @@ def index(request):
 
 class BookListView(ListView):
     model = Book
-    paginate_by = 2
     template_name = 'catalog/Book/book_list.html'
-    
-         
-    def get_context_data(self, **kwargs):
-        # Call the base implementation first to get the context
-        context = super(BookListView, self).get_context_data(**kwargs)
-        # Create any data and add it to the context
-        context['book_list'] = Book.objects.all()
-        return context
+    paginate_by = 2
 
 class BookDetailView(DetailView):
     model = Book
@@ -53,9 +45,11 @@ class BookDetailView(DetailView):
 class AuthorListView(ListView):
     model = Author
     template_name = 'catalog/Author/author_list.html'
+    paginate_by = 2
 
 class AuthorDetailView(DetailView):
     model = Author
     template_name = 'catalog/Author/author_detail.html'
+    paginate_by = 2
 
    
