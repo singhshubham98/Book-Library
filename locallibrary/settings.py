@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+SESSION_SAVE_EVERY_REQUEST = True
 ROOT_URLCONF = 'locallibrary.urls'
 
 TEMPLATES = [
@@ -118,6 +118,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
@@ -127,3 +128,7 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", 'static_root
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", 'media_root')
+
+
+LOGIN_REDIRECT_URL = '/catalog/'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
