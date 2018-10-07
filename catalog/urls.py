@@ -13,6 +13,9 @@ from .views import (
     AuthorCreate,
     AuthorUpdate,
     AuthorDelete,
+    BookCreate,
+    BookUpdate,
+    BookDelete,
 )
 
 urlpatterns = [
@@ -30,4 +33,10 @@ urlpatterns += [
     url('author/create/', AuthorCreate.as_view(), name='author_create'),
     url('author/(?P<pk>\d+)/update/', AuthorUpdate.as_view(), name='author_update'),
     url('author/(?P<pk>\d+)/delete/', AuthorDelete.as_view(), name='author_delete'),
+]
+
+urlpatterns += [  
+    url('book/create/', BookCreate.as_view(), name='book_create'),
+    url('book/(?P<pk>\d+)/update/', BookUpdate.as_view(), name='book_update'),
+    url('book/(?P<pk>\d+)/delete/', BookDelete.as_view(), name='book_delete'),
 ]
